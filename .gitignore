@@ -1,0 +1,11 @@
+# Environment files — never commit API keys
+.env
+.env.*
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+*.swp
