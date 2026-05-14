@@ -26,10 +26,13 @@ Everything in Anytype is an **object**. Objects have a **type** (e.g. "task", "p
 
 ### Creating objects
 
-1. Know the type key (e.g. `"task"`, `"page"`). Use `API-get-types` if you need to discover available types.
-2. Know the property keys and their formats. Use `API-get-properties` or `API-get-property` to inspect.
-3. Call `API-create-object` with `space_id`, `type_key`, `name`, and any property values.
-4. For select/multi_select properties, you need tag IDs — use `API-list-tags` to find existing ones or `API-create-tag` to make new ones first.
+1. Know the type key (e.g. `"task"`, `"page"`). Use `API-list-types` if you need to discover available types.
+2. **Always ask the user if they want to use a template** before creating. Call `API-list-templates` with the type ID to show available options — never skip this step, even if the user didn't mention a template. Templates can only be applied at creation time; there is no way to apply one after the fact.
+3. Know the property keys and their formats. Use `API-list-properties` or `API-get-property` to inspect before setting values — especially for `date` fields, which are stored in UTC regardless of the user's local timezone. Always confirm the expected format before writing.
+4. Call `API-create-object` with `space_id`, `type_key`, `name`, and any property values. Include `template_id` if the user selected a template.
+5. For select/multi_select properties, you need tag IDs — use `API-list-tags` to find existing ones or `API-create-tag` to make new ones first.
+
+> **Date/time fields**: Anytype stores all date values in UTC. When the user provides a local time, convert it to UTC before writing (e.g. CST 22:30 → UTC 14:30). Always show both the UTC value and the local equivalent when confirming with the user.
 
 ### Updating objects
 
