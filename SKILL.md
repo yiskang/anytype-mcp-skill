@@ -13,7 +13,7 @@ See `references/operations.md` for the full tool reference organized by domain.
 
 Everything in Anytype is an **object**. Objects have a **type** (e.g. "task", "page", "note"), belong to a **space**, and can carry **properties** (typed key-value metadata). Properties use **tags** for `select` and `multi_select` values. Objects can be grouped into **collections** (curated lists) or **sets** (filter-based views). The `anytype-mcp` server exposes all of this over ~30 MCP tools.
 
-**You always need a `space_id`** for most operations. If the user hasn't told you which space, run the discovery flow in `references/operations.md` — it takes one or two tool calls and only needs to happen once per conversation. If IDs were established earlier in the conversation or are in memory, use them directly without rediscovering.
+**You always need a `space_id`** for most operations. If the user hasn't told you which space, run the discovery flow in `references/operations.md` — it takes one or two tool calls and only needs to happen once per conversation. If IDs were established earlier in the conversation or are in memory, use them directly without rediscovering. Check the auto-memory file `reference_anytype_space.md` for a cached space ID before calling `API-list-spaces`.
 
 ## Workflow patterns
 
